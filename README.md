@@ -1,42 +1,91 @@
-# Xenon Checker
+# KryLox Checker
 
-Xenon Checker is open sourced Roblox account checker that is free to use and easy to use. It is not bypassing verification but most likely it will bypass captcha verification so it can check account for you ASAP.
+A Selenium-based tool to check Roblox account credentials from a combolist and categorize them into successful logins, failed logins, and accounts requiring verification.
 
 ## Features
 
-Current features of Xenon Checker!
+- Automated login attempts using Firefox WebDriver
+- Saves results to separate text files:
+  - `successful_logins.txt`: Working credentials
+  - `failed_logins.txt`: Invalid credentials or errors
+  - `needs_verification.txt`: Accounts requiring manual verification
+- Handles cookie consent popup
+- Basic error handling for timeouts and invalid formats
 
-```bash
-✔️ Simple combo file usage
-✔️ Login with Email
-✔️ Login with Username
-✔️ Bypassing captcha verification (sometimes)
-```
+## Prerequisites
+
+- Python 3.x
+- Firefox browser installed
+- GeckoDriver (Firefox WebDriver) installed and in same folder as the code 
+
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all modules that will be needed. You can run these commands in your cmd/terminal.
+Clone the repository:
+```bash
+git clone https://github.com/KryX0/KryLoxChecker.git
+cd roblox-account-checker
+```
 
+Install required packages:
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 ```
-or
+Or
 ```bash
-pip install colorama
-pip install selenium
+pip install selenium colorama
 ```
+
 
 ## Usage
 
-To run script all you have to do is just run this command in your cmd/terminal
-
-```python
-python main.py
+Prepare a combolist file (e.g., `combo.txt`) with credentials in the format:
+```
+username1:password1
+username2:password2
 ```
 
-## Supported OS
+Run the script:
+```bash
+python KryLoxChecker.py
+```
 
-This script works both for Linux and Windows except you will have to download chromedriver for linux from their official website https://chromedriver.storage.googleapis.com/index.html?path=103.0.5060.53/ or find tutorial on YouTube!
+Enter the name of your combolist file (without .txt extension) when prompted.
 
-## Note
 
-Script is made only for educational purpose and was not created to harm anyone or anything!
+## Notes
+
+- Important: Disable VPN/Proxy. 
+- Ensure your Firefox browser is up to date for optimal performance.
+ 
+## Example Output
+
+```
+[*] Connecting...
+[*] Connected!
+
+[NOTICE] Disable VPN/Proxy to potentially bypass verification challenges
+[REMINDER] Ensure your Firefox browser is up to date for best performance
+
+Combolist name: combo
+[*] Results will be saved to 'successful_logins.txt', 'failed_logins.txt', and 'needs_verification.txt'
+[!] GOOD: user1:pass1
+[!] BAD: user2:pass2
+[!] VERIFICATION REQUIRED: user3:pass3
+
+[*] Done!
+[*] Successful logins saved to: successful_logins.txt
+[*] Failed logins saved to: failed_logins.txt
+[*] Accounts needing verification saved to: needs_verification.txt
+```
+
+## Credits
+
+- Forked from: XenonChecker
+
+## Disclaimer
+
+This tool is for educational purposes only. Use it responsibly and with permission. The author is not responsible for any misuse or damage caused by this tool.
+
+## License
+
+MIT License (LICENSE)
